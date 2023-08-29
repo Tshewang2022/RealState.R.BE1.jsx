@@ -18,18 +18,19 @@ model User {
 }
 
 model Residency {
-    id         String   @id @default(auto()) @map("_id") @db.ObjectId
-    title      String
-    price      Int
-    address    String
-    city       String
-    country    String
-    image      String
-    facilities Json
-    useEmail   String
-    owner      User     @relation("Owner", fields: [useEmail], references: [email])
-    createdAt  DateTime @default(now())
-    updatedAt  DateTime @updatedAt
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    title       String
+    description String
+    price       Int
+    address     String
+    city        String
+    country     String
+    image       String
+    facilities  Json
+    userEmail   String
+    owner       User     @relation("Owner", fields: [userEmail], references: [email])
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 
-    @@unique(fields: [address, useEmail])
+    @@unique(fields: [address, userEmail])
 }
