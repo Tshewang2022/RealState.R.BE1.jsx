@@ -27,3 +27,25 @@ export const createResidency = asyncHandler(async (req, res) => {
     throw new Error(err.message);
   }
 });
+ //functions to get all the residencies/documents
+export const getAllResidencies = asyncHandler(async(req, res)=>{
+    const residencies = await prisma.residency.findMany({
+        orderBy: {
+            createdAt: "desc"
+        }
+    })
+    res.send(residencies)
+})
+
+ // will write the function to extract the specific documents /residencies
+
+ export const getResidency = asyncHandler(async(req, res)=>{
+     const {id} = req.params;
+    try{
+        const residency = await prisma.residency.findUnique({
+            where:{id}
+        });
+    }catch(err){
+        throw new Error(err.message)
+    }
+ })
