@@ -18,5 +18,5 @@ app.listen(PORT, ()=>{
     console.log(`The port ${PORT} is running`)
 });
 
-app.use('/api/user', userRoute)
-app.use('/api/residency', residencyRoute)
+app.use("/api/user", userRoute)
+app.use("/api/residency", residencyRoute)
